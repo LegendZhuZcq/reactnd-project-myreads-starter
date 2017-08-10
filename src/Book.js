@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import * as BooksAPI from "./BooksAPI";
 
 class Book extends Component{
   static propTypes={
@@ -16,11 +17,18 @@ class Book extends Component{
     this.props.updateShelf(this.props.book, e.target.value)
     this.setState({currentShelf:e.target.value})
   }
+  getBookShelf=(bookID)=>{
+    BooksAPI.get(this.props.book.id).then((book)=>{this.setState({currentShelf:book.shelf})})
+  }
 
+  componentDidMount(){
+    this.getBookShelf(this.props.book.id)
+  }
+  
   render(){
         const{book}=this.props
         return(
-          <li key={book.id}>
+          <li>
                          <div className="book">
                            <div className="book-top">
                              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
