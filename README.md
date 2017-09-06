@@ -1,11 +1,10 @@
-#Installation
+## Installation
 
 To install the web application, open the terminal in the root directorty and use command "npm install"
 
-#Run
+## Run
 
 To run the application, open the terminal and use command "npm starter". Your web browser will be opened to launched the application.
-
 
 
 ## Backend Server
